@@ -1,0 +1,21 @@
+<form id="register-form">
+  <div class="formGroup icon-input">
+    <label for="name">NOMBRE</label>
+    <ng-icon name="heroUser" class="icon"></ng-icon>
+    <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
+  </div>
+  <div class="formGroup icon-input">
+    <label for="email">CORREO ELECTRÓNICO</label>
+    <ng-icon name="heroEnvelope" class="icon"></ng-icon>
+    <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+  </div>
+  <div class="formGroup icon-input">
+    <label for="password">CONTRASEÑA</label>
+    <ng-icon name="heroLockClosed" class="icon"></ng-icon>
+    <input type="password" id="password" name="password" placeholder="••••••••" required>
+  </div>
+  <button type="submit" class="btn-submit">Registrarse</button>
+</form>
+<footer class="login-footer">
+  <span>¿Ya tienes cuenta? <a routerLink="/auth/login" class="form-link">Inicia sesión</a></span>
+</footer>

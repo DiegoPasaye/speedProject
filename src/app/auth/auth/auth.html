@@ -1,0 +1,26 @@
+<main class="Container">
+
+  <div class="formCard">
+
+    <div class="logo">
+      <img src="icono.webp" alt="Logo">
+      <span>Speed</span>
+    </div>
+
+    <div class="buttonsLoginRegister">
+      <button routerLink="/auth/login" routerLinkActive="active">Iniciar Sesión</button>
+      <button routerLink="/auth/register" routerLinkActive="active">Registrarse</button>
+    </div>
+
+    <header class="formHeader">
+      <h1 *ngIf="currentRoute === '/auth/login'">Bienvenido de Nuevo</h1>
+      <h1 *ngIf="currentRoute === '/auth/register'">Crea tu Cuenta</h1>
+    </header>
+
+    <div class="form">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</main>
