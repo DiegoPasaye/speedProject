@@ -1,17 +1,24 @@
-<form id="login-form">
+<form id="login-form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
   <div class="formGroup icon-input">
-    <label for="email">CORREO ELECTRÓNICO</label>
-    <ng-icon name="heroEnvelope" class="icon"></ng-icon>
-    <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+    <label for="username">NOMBRE DE USUARIO</label>
+    <ng-icon name="heroUser" class="icon"></ng-icon>
+    <input type="text" id="username" name="username" [(ngModel)]="formData.username" required>
   </div>
+
   <div class="formGroup icon-input">
     <label for="password">CONTRASEÑA</label>
     <ng-icon name="heroLockClosed" class="icon"></ng-icon>
-    <input type="password" id="password" name="password" placeholder="••••••••" required>
+    <input type="password" id="password" name="password" [(ngModel)]="formData.password" required>
     <a href="#" class="form-link">¿Olvidaste tu contraseña?</a>
   </div>
-  <button type="submit" class="btn-submit">Iniciar Sesión</button>
+
+  <button type="submit" class="btn-submit" [disabled]="isLoading">
+    {{ isLoading ? 'Iniciando...' : 'Iniciar Sesión' }}
+  </button>
 </form>
+
 <footer class="login-footer">
-  <span>¿No tienes una cuenta? <a routerLink="/auth/register" class="form-link">Regístrate</a></span>
+  <span>¿No tienes una cuenta?
+    <a routerLink="/auth/register" class="form-link">Regístrate</a>
+  </span>
 </footer>
