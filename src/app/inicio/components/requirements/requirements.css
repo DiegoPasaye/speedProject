@@ -1,0 +1,164 @@
+section {
+    background-color: oklch(.12 .01 240);
+    padding: 6rem 5%;
+    text-align: center;
+}
+
+section h2 {
+    color: oklch(.98 .01 90);
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+section h2 span {
+    color: oklch(.85 .18 85);
+}
+
+section > p:first-of-type {
+    color: oklch(.65 .02 240);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section button {
+    background-color: oklch(.85 .18 85);
+    color: oklch(.12 .01 240);
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0 auto 3rem auto;
+}
+
+section button img {
+    height: 20px;
+    filter: invert(1);
+}
+
+section button:hover {
+    background-color: oklch(.9 .2 85);
+    transform: translateY(-2px);
+}
+
+section > p:last-of-type {
+    color: oklch(.65 .02 240);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+    position: relative;
+}
+
+section > p:last-of-type::before,
+section > p:last-of-type::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background-color: oklch(.25 .01 240);
+}
+
+section > p:last-of-type::before {
+    left: 0;
+    margin-left: 5%;
+}
+
+section > p:last-of-type::after {
+    right: 0;
+    margin-right: 5%;
+}
+
+section > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+section > div > div {
+    background-color: oklch(.2 .01 240);
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid oklch(.25 .01 240);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section > div > div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+section > div > div img {
+    height: 40px;
+    filter: invert(1);
+    margin-bottom: 1.5rem;
+}
+
+section > div > div span {
+    color: oklch(.85 .18 85);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+section > div > div p {
+    color: oklch(.98 .01 90);
+    font-size: 1rem;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    section h2 {
+        font-size: 2.2rem;
+    }
+    section > p:first-of-type {
+        font-size: 1rem;
+    }
+    section button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+    section > p:last-of-type {
+        font-size: 0.8rem;
+    }
+    section > div {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    section > div > div {
+        padding: 1.5rem;
+    }
+    section > p:last-of-type::before,
+    section > p:last-of-type::after {
+        width: 20%;
+    }
+}
+
+@media (max-width: 480px) {
+    section > div {
+        grid-template-columns: 1fr;
+    }
+    section > p:last-of-type::before,
+    section > p:last-of-type::after {
+        width: 15%;
+    }
+}
