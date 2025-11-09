@@ -1,33 +1,38 @@
 <form id="register-form" (ngSubmit)="onSubmit()">
-
-  <div class="formGroup icon-input">
+  <div class="divForm icon-input">
     <label for="name">USUARIO</label>
     <ng-icon name="heroUser" class="icon"></ng-icon>
     <input type="text" id="name" name="username" placeholder="Tu nombre completo" [(ngModel)]="formData.username"
-      required>
+      required />
   </div>
 
-  <div class="formGroup icon-input">
+  <div class="divForm icon-input">
     <label for="email">CORREO ELECTRÓNICO</label>
     <ng-icon name="heroEnvelope" class="icon"></ng-icon>
-    <input type="email" id="email" name="email" placeholder="tu@correo.com" [(ngModel)]="formData.email" required>
+    <input type="email" id="email" name="email" placeholder="tu@correo.com" [(ngModel)]="formData.email" required />
   </div>
 
-  <div class="formGroup icon-input">
+  <div class="divForm icon-input">
     <label for="password">CONTRASEÑA</label>
     <ng-icon name="heroLockClosed" class="icon"></ng-icon>
-    <input type="password" id="password" name="password" placeholder="••••••••" [(ngModel)]="formData.password"
-      required>
+    <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" placeholder="••••••••"
+      [(ngModel)]="formData.password" required />
+    <button type="button" class="toggle-password" (click)="togglePasswordVisibility('password')">
+      <ng-icon [name]="showPassword ? 'heroEyeSlash' : 'heroEye'" class="eye-icon"></ng-icon>
+    </button>
   </div>
 
-  <div class="formGroup icon-input">
+  <div class="divForm icon-input">
     <label for="confirm-password">CONFIRMAR CONTRASEÑA</label>
     <ng-icon name="heroLockClosed" class="icon"></ng-icon>
-    <input type="password" id="confirm-password" name="confirmPassword" placeholder="••••••••"
-      [(ngModel)]="confirmPassword" required>
+    <input [type]="showConfirmPassword ? 'text' : 'password'" id="confirm-password" name="confirmPassword"
+      placeholder="••••••••" [(ngModel)]="confirmPassword" required />
+    <button type="button" class="toggle-password" (click)="togglePasswordVisibility('confirm')">
+      <ng-icon [name]="showConfirmPassword ? 'heroEyeSlash' : 'heroEye'" class="eye-icon"></ng-icon>
+    </button>
   </div>
 
-  <button type="submit" class="btn-submit" [disabled]="isLoading">
+  <button type="submit" class="buttonRegister" [disabled]="isLoading">
     {{ isLoading ? 'Registrando...' : 'Registrarse' }}
   </button>
 

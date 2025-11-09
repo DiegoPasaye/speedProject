@@ -2,62 +2,79 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { AuthService } from '../../services/auth.service';
 import { RegisterRequest } from '../../models/auth.models';
-import { heroEnvelope, heroLockClosed, heroUser } from '@ng-icons/heroicons/outline';
+import {
+  heroEnvelope,
+  heroLockClosed,
+  heroUser,
+  heroEye,
+  heroEyeSlash,
+} from '@ng-icons/heroicons/outline';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   templateUrl: './register.html',
   styleUrls: ['./register.css'],
-  imports: [NgIconComponent, CommonModule, FormsModule, HttpClientModule],
-  providers: [provideIcons({ heroEnvelope, heroLockClosed, heroUser })],
+  imports: [NgIconComponent, CommonModule, FormsModule, HttpClientModule, RouterModule],
+  providers: [provideIcons({ heroEnvelope, heroLockClosed, heroUser, heroEye, heroEyeSlash })],
 })
 
 export class Register {
-
   formData: RegisterRequest = {
     username: '',
     email: '',
     password: '',
-    display_name: ''
+    display_name: '',
   };
 
   confirmPassword = '';
   isLoading = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  showPassword = false;
+  showConfirmPassword = false;
+
+  constructor(private authService: AuthService, private toastService: ToastService) { }
+
+  togglePasswordVisibility(type: 'password' | 'confirm'): void {
+    if (type === 'password') {
+      this.showPassword = !this.showPassword;
+    } else {
+      this.showConfirmPassword = !this.showConfirmPassword;
+    }
+  }
 
   onSubmit(): void {
     if (!this.formData.username || !this.formData.email || !this.formData.password || !this.confirmPassword) {
-      this.errorMessage = 'Por favor completa todos los campos.';
+      this.toastService.info('Por favor completa todos los campos.');
       return;
     }
 
     if (this.formData.password !== this.confirmPassword) {
-      this.errorMessage = 'Las contraseñas no coinciden.';
+      this.toastService.error('Las contraseñas no coinciden.');
       return;
     }
 
     this.formData.display_name = this.formData.username;
 
     this.isLoading = true;
-    this.errorMessage = '';
 
     this.authService.register(this.formData).subscribe({
       next: (res) => {
-        alert(res.message);
+        this.toastService.success(res.message || 'Registro exitoso 🎉');
         this.isLoading = false;
         this.formData = { username: '', email: '', password: '', display_name: '' };
         this.confirmPassword = '';
       },
       error: (err) => {
         this.isLoading = false;
-        this.errorMessage = err.error?.error || 'Ocurrió un error durante el registro.';
-      }
+        this.toastService.error(err.error?.error || 'Ocurrió un error durante el registro.');
+      },
     });
   }
 }

@@ -13,8 +13,11 @@
     </div>
 
     <header class="formHeader">
-      <h1 *ngIf="currentRoute === '/auth/login'">Bienvenido de Nuevo</h1>
-      <h1 *ngIf="currentRoute === '/auth/register'">Crea tu Cuenta</h1>
+      @if (currentRoute === '/auth/login') {
+      <h1>Bienvenido de Nuevo</h1>
+      } @else if (currentRoute === '/auth/register') {
+      <h1 class="">Crea tu Cuenta</h1>
+      }
     </header>
 
     <div class="form">
