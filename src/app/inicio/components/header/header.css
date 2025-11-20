@@ -97,7 +97,6 @@ header > div:first-child > div:nth-of-type(2) button:last-child:hover {
 
 header > div:first-child > div:nth-of-type(2) button img {
     height: 20px;
-    filter: invert(1);
 }
 
 header > div:first-child > div:last-of-type {

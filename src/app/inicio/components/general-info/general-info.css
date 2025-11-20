@@ -51,7 +51,6 @@ section > div > div:hover {
 
 section > div > div img {
     height: 40px;
-    filter: invert(1);
     margin-bottom: 1.5rem;
 }
 

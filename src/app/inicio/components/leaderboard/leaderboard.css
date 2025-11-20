@@ -27,7 +27,6 @@ section > div:first-child > span {
 
 section > div:first-child img {
     height: 16px;
-    filter: invert(1);
 }
 
 section h2 {

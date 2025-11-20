@@ -76,12 +76,16 @@ footer > div:last-child a:hover {
 
 footer > div:last-child a img {
     height: 20px;
-    filter: invert(1);
     transition: filter 0.3s ease;
 }
-
-footer > div:last-child a:hover img {
-    filter: invert(0);
+.followUs{
+    display: flex !important;
+    flex-direction: column !important;
+}
+.followUs div{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 @media (max-width: 768px) {
