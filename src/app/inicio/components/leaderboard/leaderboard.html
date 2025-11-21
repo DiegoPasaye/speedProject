@@ -1,7 +1,7 @@
 <section>
     <div>
         <span>
-            <img src="/public/favicon.ico" alt="arrow up icon">
+            <img src="/chartIcon.svg" alt="arrow up icon">
             LIVE RANKINGS
         </span>
     
@@ -9,45 +9,26 @@
         <p>Compete with the best players around the world. Every race counts, every second matters.</p>
     </div>
 
-    <div>
         <div>
-            <img src="/public/speedLogo.jpeg" alt="number icon">
+        @if (topPlayers.length === 0) {
+            <p style="color: white; text-align: center;">Loading top players...</p>
+        }
 
+        @for (player of topPlayers; track $index) {
             <div>
-                <span>DiegoPasaye</span>
-                <p>UTM</p>
-            </div>
 
-            <div>
-                <span>2930</span>
-                <p>POINTS</p>
-            </div>
-        </div>
-        <div>
-            <img src="/public/speedLogo.jpeg" alt="number icon">
+                <img src="/speedLogo.jpeg" alt="number icon">
 
-            <div>
-                <span>DiegoPasaye</span>
-                <p>UTM</p>
-            </div>
+                <div>
+                    <span>{{ player.username }}</span>
+                    <p>UTM</p>
+                </div>
 
-            <div>
-                <span>2930</span>
-                <p>POINTS</p>
+                <div>
+                    <span>{{ player.high_score }}</span>
+                    <p>POINTS</p>
+                </div>
             </div>
-        </div>
-        <div>
-            <img src="/public/speedLogo.jpeg" alt="number icon">
-
-            <div>
-                <span>DiegoPasaye</span>
-                <p>UTM</p>
-            </div>
-
-            <div>
-                <span>2930</span>
-                <p>POINTS</p>
-            </div>
-        </div>
+        }
     </div>
 </section>
