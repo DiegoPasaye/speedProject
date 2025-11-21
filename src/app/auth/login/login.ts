@@ -35,7 +35,7 @@ export class Login {
   constructor(
     private authService: AuthService,
     private toast: ToastService
-  ) {}
+  ) { }
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
