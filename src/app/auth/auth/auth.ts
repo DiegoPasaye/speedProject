@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -8,7 +9,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   templateUrl: './auth.html',
   styleUrls: ['./auth.css'],
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule, HttpClientModule]
 })
 export class Auth {
   currentRoute = '';

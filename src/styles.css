@@ -32,3 +32,39 @@
     font-family: 'Montserrat', sans-serif;
   }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-snack-bar-container {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.success-snackbar .mdc-snackbar__surface {
+  background-color: #2ecc71 !important; /* Verde éxito */
+  color: #fff !important;
+}
+
+.error-snackbar .mdc-snackbar__surface {
+  background-color: #e74c3c !important; /* Rojo error */
+  color: #fff !important;
+}
+
+.info-snackbar .mdc-snackbar__surface {
+  background-color: #3498db !important; /* Azul info */
+  color: #fff !important;
+}
+
+.success-snackbar .mdc-snackbar__action,
+.error-snackbar .mdc-snackbar__action,
+.info-snackbar .mdc-snackbar__action {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.mdc-snackbar__surface {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25) !important;
+}
+
