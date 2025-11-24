@@ -4,16 +4,14 @@ import { ApiService, ScoreEntry } from '../../../services/api.service';
 
 @Component({
   selector: 'app-leaderboard',
-  standalone: true, // Aseguramos que sea standalone
-  imports: [CommonModule], // Importamos CommonModule
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './leaderboard.html',
   styleUrl: './leaderboard.css'
 })
 export class Leaderboard implements OnInit {
-  // Inyectamos el servicio
   private apiService = inject(ApiService);
   
-  // Variable para guardar el top 3
   topPlayers: ScoreEntry[] = [];
 
   ngOnInit(): void {
@@ -22,9 +20,17 @@ export class Leaderboard implements OnInit {
 
   obtenerLeaderboard() {
     this.apiService.getLeaderboard().subscribe({
-      next: (data) => {
-        this.topPlayers = data;
-        console.log('Top 3 recibido:', this.topPlayers);
+      next: (data: any) => {
+        if (data.leaderboard) {
+            this.topPlayers = data.leaderboard;
+        } else if (Array.isArray(data)) {
+            this.topPlayers = data;
+        } else {
+            console.error('Formato de datos inesperado:', data);
+            this.topPlayers = [];
+        }
+        
+        console.log('Leaderboard listo para mostrar:', this.topPlayers);
       },
       error: (err) => {
         console.error('Error al obtener el leaderboard:', err);

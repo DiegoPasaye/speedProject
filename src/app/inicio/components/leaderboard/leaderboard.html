@@ -9,23 +9,22 @@
         <p>Compete with the best players around the world. Every race counts, every second matters.</p>
     </div>
 
-        <div>
+    <div>
         @if (topPlayers.length === 0) {
             <p style="color: white; text-align: center;">Loading top players...</p>
         }
 
         @for (player of topPlayers; track $index) {
             <div>
-
                 <img src="/speedLogo.jpeg" alt="number icon">
 
                 <div>
-                    <span>{{ player.username }}</span>
+                    <span>{{ player.display_name }}</span>
                     <p>UTM</p>
                 </div>
 
                 <div>
-                    <span>{{ player.high_score }}</span>
+                    <span>{{ player.total_score }}</span>
                     <p>POINTS</p>
                 </div>
             </div>

@@ -16,5 +16,9 @@ export const routes: Routes = [
   {
     path: 'maps',
     loadComponent: () => import('./pages/maps-wiki/maps-wiki').then(m => m.MapsWikiComponent)
-  }
+  },
+  {
+    path: 'features',
+    loadChildren: () => import('./features/features-module').then(m => m.FeaturesModule)
+  },
 ];
