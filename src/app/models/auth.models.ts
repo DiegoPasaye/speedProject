@@ -31,3 +31,14 @@ export interface LoginResponse {
     };
   };
 }
+
+export interface UserSession {
+  user_id: string;
+  username: string;
+  email?: string;
+  created_at: string;
+  profile?: {
+    display_name: string;
+    monedas: number;
+  };
+}

@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'speed-fondo': '#0f0f14',
+        'speed-fondo': '#00000',
         'speed-superficie-1': '#303038',
         'speed-superficie-2': '#383840',
         'speed-acento': '#ffd93d',

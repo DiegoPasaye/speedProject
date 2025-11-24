@@ -95,14 +95,13 @@ img {
     border-radius: 0;
   }
 
-  .logo {
-    flex-direction: column;
+  .logo{
     font-size: 1.5rem;
   }
 
   img {
-    width: 35px;
-    height: 35px;
+    width: 60px;
+    height: 60px;
   }
 
   .buttonsLoginRegister {
@@ -126,20 +125,12 @@ img {
     font-size: 1.8rem;
   }
 
-  .buttonsLoginRegister button {
-    font-size: 1rem;
-  }
-
   .formHeader h1 {
     font-size: 1.3rem;
   }
 }
 
 @media (min-width: 768px) {
-  .formCard {
-    width: 35%;
-  }
-
   .formHeader h1 {
     font-size: 1.5rem;
   }

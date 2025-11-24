@@ -1,0 +1,289 @@
+<div class="min-h-screen bg-speed-fondo text-speed-texto p-4 md:p-8 font-sans bg-fixed bg-no-repeat" style="background-image:
+       radial-gradient(ellipse 50% 70% at 25% 25%, var(--color-speed-acento-glow), transparent 80%),
+       radial-gradient(ellipse 50% 70% at 75% 75%, var(--color-speed-acento-glow), transparent 80%);">
+
+  <div *ngIf="isLoading" class="flex justify-center items-center h-screen">
+    <div class="text-speed-acento text-2xl font-bold animate-pulse">Cargando Perfil...</div>
+  </div>
+
+  <div *ngIf="!isLoading && profileData" class="max-w-7xl mx-auto space-y-8 animate-fadeIn">
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <div
+        class="lg:col-span-1 bg-gradient-to-br from-speed-superficie-1 to-speed-superficie-1/50 border border-speed-acento/20 rounded-xl overflow-hidden relative group shadow-lg">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+          <ng-icon name="heroTruck" class="text-9xl text-speed-texto"></ng-icon>
+        </div>
+
+        <div class="p-6 relative pb-2">
+          <div class="flex justify-between items-start">
+            <span
+              class="bg-speed-acento/10 text-speed-acento border border-speed-acento px-2 py-0.5 rounded text-xs font-bold mb-2">
+              LICENCIA DE PILOTO
+            </span>
+            <div class="flex gap-2">
+              <button
+                class="h-8 w-8 flex items-center justify-center text-gray-400 hover:text-speed-acento transition-colors rounded-full hover:bg-speed-superficie-2">
+                <ng-icon name="heroShare" class="text-lg"></ng-icon>
+              </button>
+              <button
+                class="h-8 w-8 flex items-center justify-center text-gray-400 hover:text-speed-acento transition-colors rounded-full hover:bg-speed-superficie-2">
+                <ng-icon name="heroCog6Tooth" class="text-lg"></ng-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 mt-2">
+            <div class="relative">
+              <div class="absolute inset-0 bg-speed-acento/20 blur-xl rounded-full"></div>
+              <div
+                class="w-24 h-24 rounded-full border-4 border-speed-superficie-1 relative z-10 overflow-hidden bg-gray-800 flex items-center justify-center">
+                <span class="text-3xl font-bold text-gray-500">
+                  {{ profileData.user.display_name.substring(0,2).toUpperCase() }}
+                </span>
+              </div>
+              <div
+                class="absolute -bottom-2 -right-2 bg-speed-acento text-black text-xs font-bold px-2 py-1 rounded-full border-2 border-speed-superficie-1 z-20">
+                NVL {{ profileData.user.level }}
+              </div>
+            </div>
+            <div>
+              <h1 class="text-2xl font-bold tracking-tight text-white uppercase">
+                {{ profileData.user.display_name }}
+              </h1>
+              <p class="text-gray-400 font-mono text-sm">@{{ profileData.user.username }}</p>
+              <div class="flex items-center gap-2 mt-2">
+                <span
+                  class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-2 py-0.5 rounded text-xs font-bold">
+                  NITRO CLUB
+                </span>
+                <span class="text-xs text-gray-500">Desde {{ profileData.user.created_at | date:'MMM yyyy' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 relative pt-4">
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div class="bg-speed-fondo/50 p-3 rounded-lg border border-gray-700/50">
+              <p class="text-gray-400 text-xs">Mapas Completados</p>
+              <p class="text-xl font-bold text-speed-acento">{{ profileData.user.maps_completed }}</p>
+            </div>
+            <div class="bg-speed-fondo/50 p-3 rounded-lg border border-gray-700/50">
+              <p class="text-gray-400 text-xs">Carreras Totales</p>
+              <p class="text-xl font-bold text-white">{{ profileData.user.races_played }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <div
+          class="bg-speed-superficie-1 border border-gray-700/50 hover:border-speed-acento/50 transition-colors rounded-xl p-6 flex flex-col justify-between h-full">
+          <div class="flex justify-between items-start mb-4">
+            <div class="p-3 bg-yellow-500/10 rounded-full">
+              <ng-icon name="heroCurrencyDollar" class="text-2xl text-yellow-500"></ng-icon>
+            </div>
+            <span class="bg-speed-superficie-2 text-gray-300 px-2 py-0.5 rounded-full text-xs">
+              Economía
+            </span>
+          </div>
+          <div>
+            <p class="text-gray-400 text-sm">Ganancias Totales</p>
+            <h3 class="text-3xl font-bold text-yellow-500">{{ profileData.user.monedas | number }}</h3>
+            <p class="text-xs text-gray-500 mt-1">Créditos Disponibles</p>
+          </div>
+        </div>
+
+        <div
+          class="bg-speed-superficie-1 border border-gray-700/50 hover:border-speed-acento/50 transition-colors rounded-xl p-6 flex flex-col justify-between h-full">
+          <div class="flex justify-between items-start mb-4">
+            <div class="p-3 bg-blue-500/10 rounded-full">
+              <ng-icon name="heroTruck" class="text-2xl text-blue-500"></ng-icon>
+            </div>
+            <span class="bg-speed-superficie-2 text-gray-300 px-2 py-0.5 rounded-full text-xs">
+              Coleccionista
+            </span>
+          </div>
+          <div>
+            <p class="text-gray-400 text-sm">Valor del Garaje</p>
+            <h3 class="text-3xl font-bold text-blue-500">{{ profileData.user.garage_value | number }}</h3>
+            <p class="text-xs text-gray-500 mt-1">
+              {{ profileData.user.total_cars }}/{{ profileData.user.total_cars_available }} Coches
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="bg-speed-superficie-1 border border-gray-700/50 hover:border-speed-acento/50 transition-colors rounded-xl p-6 flex flex-col justify-between h-full">
+          <div class="flex justify-between items-start mb-4">
+            <div class="p-3 bg-purple-500/10 rounded-full">
+              <ng-icon name="heroMap" class="text-2xl text-purple-500"></ng-icon>
+            </div>
+            <span class="bg-speed-superficie-2 text-gray-300 px-2 py-0.5 rounded-full text-xs">
+              Explorador
+            </span>
+          </div>
+          <div>
+            <p class="text-gray-400 text-sm">Mapas Dominados</p>
+            <h3 class="text-3xl font-bold text-purple-500">{{ profileData.user.maps_completed }}/4</h3>
+            <p class="text-xs text-gray-500 mt-1">Progreso Global</p>
+          </div>
+        </div>
+
+        <div
+          class="md:col-span-3 bg-gradient-to-r from-speed-superficie-1 to-speed-fondo border border-gray-700/50 rounded-xl p-6 flex items-center gap-6">
+          <div class="relative flex-shrink-0 hidden sm:block">
+            <div
+              class="w-16 h-16 rounded-full bg-speed-acento/10 flex items-center justify-center border-2 border-speed-acento">
+              <ng-icon name="heroTrophy" class="text-3xl text-speed-acento"></ng-icon>
+            </div>
+          </div>
+          <div class="flex-1 space-y-2">
+            <div class="flex justify-between items-center">
+              <h4 class="font-semibold text-white">Nivel de Jugador</h4>
+              <span class="text-speed-acento font-bold">Nvl {{ profileData.user.level }}</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-3">
+              <div class="bg-speed-acento h-3 rounded-full" [style.width.%]="(profileData.user.monedas % 5000) / 50">
+              </div>
+            </div>
+            <p class="text-xs text-gray-400">
+              Sigue jugando para desbloquear más recompensas
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full">
+
+      <div class="flex flex-col sm:flex-row justify-center items-center mb-6 gap-4">
+        <div class="bg-speed-superficie-1 border border-gray-700/50 p-1 rounded-lg inline-flex">
+          <button (click)="setActiveTab('garage')"
+            class="flex items-center px-4 py-2 rounded-md text-sm font-medium transition-all"
+            [ngClass]="activeTab === 'garage' ? 'bg-speed-acento text-black shadow' : 'text-gray-400 hover:text-white'">
+            <ng-icon name="heroTruck" class="mr-2"></ng-icon> Garaje
+          </button>
+          <button (click)="setActiveTab('trophies')"
+            class="flex items-center px-4 py-2 rounded-md text-sm font-medium transition-all"
+            [ngClass]="activeTab === 'trophies' ? 'bg-speed-acento text-black shadow' : 'text-gray-400 hover:text-white'">
+            <ng-icon name="heroTrophy" class="mr-2"></ng-icon> Trofeos
+          </button>
+          <button (click)="setActiveTab('records')"
+            class="flex items-center px-4 py-2 rounded-md text-sm font-medium transition-all"
+            [ngClass]="activeTab === 'records' ? 'bg-speed-acento text-black shadow' : 'text-gray-400 hover:text-white'">
+            <ng-icon name="heroClock" class="mr-2"></ng-icon> Récords
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'garage'"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 bg-centered">
+        <div *ngFor="let car of profileData.garage"
+          class="group relative rounded-xl overflow-hidden aspect-[4/3] bg-speed-superficie-1 border border-gray-700 hover:border-speed-acento transition-all duration-300 hover:shadow-lg hover:shadow-speed-acento/20 hover:-translate-y-1">
+
+          <img [src]="getCarImage(car.name)" [alt]="car.name"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            [ngClass]="{'grayscale opacity-40': !car.unlocked}">
+
+          <div class="absolute inset-0 bg-gradient-to-t from-speed-fondo/90 via-transparent to-transparent opacity-80">
+          </div>
+
+          <div *ngIf="!car.unlocked" class="absolute inset-0 flex items-center justify-center">
+            <div
+              class="bg-speed-fondo/80 backdrop-blur-sm p-3 rounded-full border border-gray-600 flex flex-col items-center">
+              <ng-icon name="heroLockClosed" class="text-3xl text-gray-400"></ng-icon>
+              <span class="text-xs text-speed-acento font-bold mt-1">${{ car.cost_to_unlock | number }}</span>
+            </div>
+          </div>
+
+          <!-- Info del Coche -->
+          <div class="absolute bottom-0 left-0 right-0 p-4">
+            <div class="flex justify-between items-end">
+              <div>
+                <span class="text-xs px-2 py-0.5 rounded mb-2 inline-block"
+                  [ngClass]="car.unlocked ? 'bg-speed-acento text-black' : 'bg-gray-700 text-gray-400'">
+                  {{ getCarClass(car.cost_to_unlock) }}
+                </span>
+                <h3 class="font-bold text-lg" [ngClass]="!car.unlocked ? 'text-gray-500' : 'text-white'">
+                  {{ car.name }}
+                </h3>
+              </div>
+              <div *ngIf="car.unlocked" class="flex flex-col items-end">
+                <span class="text-xs text-gray-400">Motor</span>
+                <span class="text-speed-acento font-bold">Nvl {{ car.level_motor }}</span>
+              </div>
+            </div>
+
+            <div *ngIf="car.unlocked" class="w-full bg-gray-700/50 h-1 mt-3 rounded-full overflow-hidden">
+              <div class="bg-speed-acento h-full rounded-full" [style.width.%]="car.level_motor * 10"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'trophies'" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div *ngFor="let trophy of profileData.trophies"
+          class="flex flex-col items-center justify-center p-6 rounded-xl border text-center transition-all hover:bg-speed-superficie-1/80"
+          [ngClass]="trophy.achieved ? 'bg-speed-superficie-1 border-speed-acento/30' : 'bg-speed-superficie-1/30 border-dashed border-gray-700'">
+
+          <div class="p-4 rounded-full mb-3"
+            [ngClass]="trophy.achieved ? 'bg-speed-fondo shadow-lg shadow-speed-acento/5' : 'bg-speed-fondo/30 grayscale'">
+            <ng-icon [name]="getTrophyIcon(trophy.name)" class="text-3xl"
+              [class]="getTrophyColor(trophy.name, trophy.achieved)"></ng-icon>
+          </div>
+
+          <h4 class="font-bold text-sm mb-1" [ngClass]="!trophy.achieved ? 'text-gray-500' : 'text-white'">
+            {{ trophy.name }}
+          </h4>
+          <p class="text-xs text-gray-500 line-clamp-2">{{ trophy.description }}</p>
+          <span *ngIf="trophy.achieved" class="text-[10px] text-speed-acento mt-2 font-mono">OBTENIDO</span>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'records'" class="bg-speed-superficie-1 border border-gray-700/50 rounded-xl">
+        <div class="p-6 border-b border-gray-700/50">
+          <h3 class="text-xl font-bold text-white">Historial de Récords</h3>
+          <p class="text-sm text-gray-400">Tu mejor desempeño en cada mapa</p>
+        </div>
+        <div class="p-6">
+          <div class="space-y-1">
+            <div *ngFor="let record of profileData.records"
+              class="flex items-center justify-between p-4 hover:bg-speed-fondo/50 rounded-lg transition-colors border-b border-gray-700/20 last:border-0">
+
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg border-2"
+                  [class]="getRankColor(record.high_score)">
+                  {{ getRank(record.high_score) }}
+                </div>
+                <div>
+                  <h4 class="font-medium text-white">{{ record.map_name }}</h4>
+                  <p class="text-xs text-gray-500">Mejor Intento</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-8 text-sm">
+                <div class="flex flex-col items-end w-20">
+                  <span class="text-gray-400 text-xs">Puntaje</span>
+                  <span class="text-speed-acento font-bold">{{ record.high_score | number }}</span>
+                </div>
+                <button class="text-gray-400 hover:text-white">
+                  <ng-icon name="heroChevronRight" class="text-xl"></ng-icon>
+                </button>
+              </div>
+            </div>
+
+            <div *ngIf="profileData.records.length === 0" class="text-center text-gray-500 py-8">
+              <p>Aún no has jugado en ningún mapa.</p>
+              <p class="text-sm mt-2">¡Ve a competir y marca tu historia!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

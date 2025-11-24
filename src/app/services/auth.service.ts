@@ -1,20 +1,58 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { RegisterRequest, RegisterResponse, LoginResponse } from '../models/auth.models';
-import { environment } from '../../environments/environments.prod';
+import { tap } from 'rxjs/operators';
+// IMPORTANTE: Siempre importamos 'environment' (el base).
+// Angular se encarga de cambiarlo por el de producción cuando sea necesario.
+import { environment } from '../../environments/environment';
+import { RegisterRequest, RegisterResponse, LoginResponse, UserSession } from '../models/auth.models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
+  // Esta variable tomará el valor correcto automáticamente (local o nube)
   private apiUrl = environment.apiUrl;
+  private userKey = 'speed_user_session';
 
   constructor(private http: HttpClient) {}
 
+  // --- REGISTRO ---
   register(data: RegisterRequest): Observable<RegisterResponse> {
     return this.http.post<RegisterResponse>(`${this.apiUrl}/register`, data);
   }
 
+  // --- LOGIN ---
   login(data: { username: string; password: string }): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, data);
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, data).pipe(
+      tap((response) => {
+        if (response && response.user) {
+          this.saveUserToStorage(response.user);
+        }
+      })
+    );
+  }
+
+  // --- MÉTODOS DE UTILIDAD ---
+  private saveUserToStorage(user: UserSession): void {
+    localStorage.setItem(this.userKey, JSON.stringify(user));
+  }
+
+  get currentUser(): UserSession | null {
+    const userStr = localStorage.getItem(this.userKey);
+    if (!userStr) return null;
+    try {
+      return JSON.parse(userStr) as UserSession;
+    } catch (e) {
+      console.error('Error al leer usuario del storage', e);
+      return null;
+    }
+  }
+
+  get currentUserId(): string | null {
+    return this.currentUser?.user_id || null;
+  }
+
+  logout(): void {
+    localStorage.removeItem(this.userKey);
   }
 }

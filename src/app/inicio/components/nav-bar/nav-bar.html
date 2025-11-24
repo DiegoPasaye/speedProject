@@ -1,11 +1,24 @@
 <nav>
-    <img src="/speedLogo.jpeg" alt="Speed logo">
+    <a routerLink="/">
+        <img src="/speedLogo.jpeg" alt="Speed logo">
+    </a>
 
     <div>
-        <a href="">GAME</a>
-        <a href="">FEATURES</a>
-        <a href="">LEADERBOARD</a>
-        <button>DOWNLOAD</button>
-        <a href="auth/login"><button >LOGIN</button></a>
+        <a routerLink="/">GAME</a>
+        <a routerLink="/">FEATURES</a>
+        <a routerLink="/">LEADERBOARD</a>
+
+        <button class="btn-download">DOWNLOAD</button>
+
+        @if (isLoggedIn) {
+            <a routerLink="/profile" class="profile-btn" [title]="'Ir al perfil de ' + userName">
+                <ng-icon name="heroUserCircle" class="text-3xl"></ng-icon>
+                <span class="text-sm font-bold ml-2">{{ userName }}</span>
+            </a>
+        } @else {
+            <a routerLink="/auth/login">
+                <button class="btn-login">LOGIN</button>
+            </a>
+        }
     </div>
 </nav>

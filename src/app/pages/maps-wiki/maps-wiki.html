@@ -1,0 +1,184 @@
+<div
+  class="min-h-screen bg-speed-fondo text-speed-texto p-4 md:p-8 font-sans bg-fixed bg-no-repeat flex flex-col justify-center"
+  style="background-image:
+       radial-gradient(ellipse 50% 70% at 25% 25%, var(--color-speed-acento-glow), transparent 80%),
+       radial-gradient(ellipse 50% 70% at 75% 75%, var(--color-speed-acento-glow), transparent 80%);">
+
+  <div class="max-w-7xl mx-auto space-y-8 w-full">
+
+    <header class="text-center animate-fadeIn">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+        ¡CONOCE TODOS NUESTROS <span class="text-speed-acento">MAPAS</span>!
+      </h1>
+      <p class="text-gray-400 max-w-2xl mx-auto">
+        Base de datos oficial de circuitos. Analiza la telemetría, récords y condiciones climáticas de cada zona.
+      </p>
+    </header>
+
+    <div *ngIf="isLoading" class="flex justify-center py-20">
+      <div class="text-speed-acento text-xl animate-pulse">Sincronizando satélites...</div>
+    </div>
+
+    <div *ngIf="!isLoading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
+
+      <div *ngFor="let map of maps" (click)="openMapDetails(map)"
+        class="group cursor-pointer overflow-hidden bg-[#1a1a20] border border-[#303038] rounded-xl hover:border-speed-acento/50 transition-all duration-300 hover:shadow-lg hover:shadow-speed-acento/10 hover:-translate-y-1 relative">
+
+        <div class="relative h-48 w-full overflow-hidden">
+          <img [src]="getVisuals(map.name).image" [alt]="map.name"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a20] via-transparent to-transparent opacity-90"></div>
+
+          <div class="absolute top-3 left-3">
+            <span class="px-2 py-1 rounded text-xs font-bold border"
+              [class]="map.cost_to_unlock === 0 ? 'bg-green-500/20 text-green-400 border-green-500/30' : 'bg-speed-acento/20 text-speed-acento border-speed-acento/30'">
+              {{ map.cost_to_unlock === 0 ? 'GRATUITO' : 'PREMIUM' }}
+            </span>
+          </div>
+
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="flex justify-between items-end">
+              <div>
+                <h3 class="text-xl font-bold text-white group-hover:text-speed-acento transition-colors">{{ map.name }}
+                </h3>
+                <p class="text-xs text-gray-400 flex items-center gap-1 mt-1">
+                  <ng-icon name="heroMap"></ng-icon> {{ getVisuals(map.name).length }} • {{
+                  getVisuals(map.name).difficulty }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 grid grid-cols-2 gap-4 border-t border-[#303038] bg-[#1a1a20]">
+          <div class="flex items-center gap-2">
+            <ng-icon name="heroUsers" class="text-blue-400"></ng-icon>
+            <div class="flex flex-col">
+              <span class="text-[10px] text-gray-500 uppercase">Popularidad</span>
+              <span class="font-bold text-sm text-white">{{ map.total_owners | number }}</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <ng-icon name="heroTrophy" class="text-speed-acento"></ng-icon>
+            <div class="flex flex-col">
+              <span class="text-[10px] text-gray-500 uppercase">Récord Mundial</span>
+              <span class="font-bold text-sm text-white font-mono">{{ map.world_record | number }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="selectedMap" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
+
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" (click)="closeMapDetails()"></div>
+
+    <div
+      class="relative w-full max-w-5xl bg-[#1a1a20] border border-[#303038] rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
+
+      <button (click)="closeMapDetails()"
+        class="absolute top-4 right-4 z-50 p-2 bg-black/50 hover:bg-black/80 text-white rounded-full transition-colors">
+        <ng-icon name="heroXMark" class="text-xl"></ng-icon>
+      </button>
+
+      <div class="relative w-full md:w-1/2 h-64 md:h-auto min-h-[300px]">
+        <img [src]="getVisuals(selectedMap.name).image" [alt]="selectedMap.name" class="w-full h-full object-cover">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-[#1a1a20] via-[#1a1a20]/40 to-transparent md:bg-gradient-to-r">
+        </div>
+
+        <div class="absolute bottom-8 left-8 right-8">
+          <span class="inline-block px-3 py-1 rounded text-xs font-bold border mb-4"
+            [class]="getDifficultyColor(getVisuals(selectedMap.name).difficulty)">
+            CLASE {{ getVisuals(selectedMap.name).difficulty | uppercase }}
+          </span>
+          <h2 class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter text-white mb-4 leading-none">
+            {{ selectedMap.name }}
+          </h2>
+          <p class="text-sm text-gray-300 leading-relaxed border-l-2 border-speed-acento pl-4 italic">
+            "{{ selectedMap.description || 'Información clasificada.' }}"
+          </p>
+        </div>
+      </div>
+
+      <div class="w-full md:w-1/2 p-8 bg-[#1a1a20] overflow-y-auto">
+
+        <div class="flex items-center gap-2 mb-6 text-speed-acento font-bold uppercase tracking-wider text-sm">
+          <ng-icon name="heroChartBar" class="text-lg"></ng-icon> Análisis de Sector
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          <div class="p-4 rounded-xl bg-[#0f0f14] border border-[#303038]">
+            <div class="flex items-center gap-2 mb-2 text-gray-500 text-xs uppercase">
+              <ng-icon name="heroMap"></ng-icon> Longitud
+            </div>
+            <p class="text-2xl font-bold text-white">{{ getVisuals(selectedMap.name).length }}</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0f0f14] border border-[#303038]">
+            <div class="flex items-center gap-2 mb-2 text-gray-500 text-xs uppercase">
+              <ng-icon name="heroClock"></ng-icon> Vueltas
+            </div>
+            <p class="text-2xl font-bold text-white">{{ getVisuals(selectedMap.name).laps }}</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0f0f14] border border-[#303038]">
+            <div class="flex items-center gap-2 mb-2 text-yellow-500 text-xs uppercase">
+              <ng-icon name="heroTrophy"></ng-icon> Récord Mundial
+            </div>
+            <p class="text-xl font-mono font-bold text-speed-acento">{{ selectedMap.world_record | number }}</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0f0f14] border border-[#303038]">
+            <div class="flex items-center gap-2 mb-2 text-blue-500 text-xs uppercase">
+              <ng-icon name="heroUsers"></ng-icon> Corredores
+            </div>
+            <p class="text-xl font-bold text-white">{{ selectedMap.total_owners | number }}</p>
+          </div>
+        </div>
+
+        <h4 class="text-xs font-bold uppercase text-gray-500 mb-4">Características de Pista</h4>
+        <div class="space-y-4">
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs uppercase font-medium">
+              <span class="text-gray-400">Curvas</span>
+              <span class="text-blue-400">{{ getVisuals(selectedMap.name).attributes.curves }}%</span>
+            </div>
+            <div class="h-2 bg-[#303038] rounded-full overflow-hidden">
+              <div class="h-full bg-blue-500 rounded-full"
+                [style.width.%]="getVisuals(selectedMap.name).attributes.curves"></div>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs uppercase font-medium">
+              <span class="text-gray-400">Rectas</span>
+              <span class="text-green-400">{{ getVisuals(selectedMap.name).attributes.straights }}%</span>
+            </div>
+            <div class="h-2 bg-[#303038] rounded-full overflow-hidden">
+              <div class="h-full bg-green-500 rounded-full"
+                [style.width.%]="getVisuals(selectedMap.name).attributes.straights"></div>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs uppercase font-medium">
+              <span class="text-gray-400">Complejidad Técnica</span>
+              <span class="text-purple-400">{{ getVisuals(selectedMap.name).attributes.technical }}%</span>
+            </div>
+            <div class="h-2 bg-[#303038] rounded-full overflow-hidden">
+              <div class="h-full bg-purple-500 rounded-full"
+                [style.width.%]="getVisuals(selectedMap.name).attributes.technical"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-[#303038] flex justify-between items-center">
+          <span class="text-xs text-gray-500 uppercase">Clima Predominante</span>
+          <span class="text-sm text-white font-bold">{{ getVisuals(selectedMap.name).weather }}</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { AuthService } from '../../services/auth.service';
 import { RegisterRequest } from '../../models/auth.models';
@@ -39,7 +39,11 @@ export class Register {
   showPassword = false;
   showConfirmPassword = false;
 
-  constructor(private authService: AuthService, private toastService: ToastService) { }
+  constructor(
+    private authService: AuthService,
+    private toastService: ToastService,
+    private router: Router
+  ) { }
 
   togglePasswordVisibility(type: 'password' | 'confirm'): void {
     if (type === 'password') {
@@ -66,10 +70,14 @@ export class Register {
 
     this.authService.register(this.formData).subscribe({
       next: (res) => {
-        this.toastService.success(res.message || 'Registro exitoso 🎉');
+        this.toastService.success('¡Registro exitoso, ahora inicia sesión!');
+
         this.isLoading = false;
+
         this.formData = { username: '', email: '', password: '', display_name: '' };
         this.confirmPassword = '';
+
+        this.router.navigate(['/auth/login']);
       },
       error: (err) => {
         this.isLoading = false;

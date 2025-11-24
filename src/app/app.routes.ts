@@ -9,4 +9,12 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth-module').then(m => m.AuthModule)
   },
+  {
+    path: 'profile',
+    loadComponent: () => import('./pages/profile/profile').then(m => m.ProfileComponent)
+  },
+  {
+    path: 'maps',
+    loadComponent: () => import('./pages/maps-wiki/maps-wiki').then(m => m.MapsWikiComponent)
+  }
 ];
