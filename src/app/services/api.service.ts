@@ -14,8 +14,8 @@ interface LeaderboardResponse {
   providedIn: 'root'
 })
 export class ApiService {
-  // private apiUrl = 'https://speed-backend-rouge.vercel.app/api'; 
-  private apiUrl = 'http://localhost:3000/api'; 
+  private apiUrl = 'https://speed-backend-rouge.vercel.app/api'; 
+  // private apiUrl = 'http://localhost:3000/api'; 
 
   constructor(private http: HttpClient) { }
 
