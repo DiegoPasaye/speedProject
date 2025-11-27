@@ -2,15 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-// IMPORTANTE: Siempre importamos 'environment' (el base).
-// Angular se encarga de cambiarlo por el de producción cuando sea necesario.
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environments.prod';
 import { RegisterRequest, RegisterResponse, LoginResponse, UserSession } from '../models/auth.models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  // Esta variable tomará el valor correcto automáticamente (local o nube)
   private apiUrl = environment.apiUrl;
   private userKey = 'speed_user_session';
 
