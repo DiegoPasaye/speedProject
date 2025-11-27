@@ -1,14 +1,13 @@
 <nav>
     <a routerLink="/">
-        <img src="/speedLogo.jpeg" alt="Speed logo">
+        <img src="/logoBien.webp" alt="Speed logo">
     </a>
 
     <div>
-        <a routerLink="/">GAME</a>
-        <a routerLink="/">FEATURES</a>
-        <a routerLink="/">LEADERBOARD</a>
+        <a routerLink="/">ACTUALIZACIONES</a>
+        <a routerLink="/">RANKING</a>
 
-        <button class="btn-download">DOWNLOAD</button>
+        <button class="btn-download">DESCARGAR</button>
 
         @if (isLoggedIn) {
             <a routerLink="/profile" class="profile-btn" [title]="'Ir al perfil de ' + userName">
@@ -17,7 +16,7 @@
             </a>
         } @else {
             <a routerLink="/auth/login">
-                <button class="btn-login">LOGIN</button>
+                <button class="btn-login">INICIAR SESION</button>
             </a>
         }
     </div>

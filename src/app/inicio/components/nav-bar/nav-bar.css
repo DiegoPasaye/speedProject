@@ -2,7 +2,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
+    padding: 1rem 5%;
     background-color: oklch(.12 .01 240);
     position: sticky;
     top: 0;
@@ -11,8 +11,7 @@ nav {
 }
 
 nav img {
-    height: 40px;
-    object-fit: contain;
+    height: 60px;
 }
 
 nav > div {

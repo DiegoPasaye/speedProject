@@ -2,16 +2,16 @@
     <div>
         <span>
             <img src="/chartIcon.svg" alt="arrow up icon">
-            LIVE RANKINGS
+            RANKING EN VIVO
         </span>
-    
-        <h2>GLOBAL <span>LEADERBOARD</span></h2>
-        <p>Compete with the best players around the world. Every race counts, every second matters.</p>
+
+        <h2>RANKING <span>GLOBAL</span></h2>
+        <p>Compite con los mejores jugadores de todo el mundo. Cada carrera cuenta, cada segundo importa.</p>
     </div>
 
     <div>
         @if (topPlayers.length === 0) {
-            <p style="color: white; text-align: center;">Loading top players...</p>
+            <p style="color: white; text-align: center;">Cargando los mejores jugadores...</p>
         }
 
         @for (player of topPlayers; track $index) {
@@ -25,7 +25,7 @@
 
                 <div>
                     <span>{{ player.total_score }}</span>
-                    <p>POINTS</p>
+                    <p>PUNTOS</p>
                 </div>
             </div>
         }
