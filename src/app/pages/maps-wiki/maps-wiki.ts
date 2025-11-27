@@ -6,7 +6,7 @@ import {
   heroMap, heroGlobeAmericas, heroUsers, heroCurrencyDollar, heroTag,
   heroTrophy, heroClock, heroChartBar, heroXMark, heroPlay, heroLockClosed
 } from '@ng-icons/heroicons/outline';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environments.prod';
 import { MapWikiItem } from '../../models/maps.models';
 
 interface MapVisualConfig {

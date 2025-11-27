@@ -9,7 +9,7 @@ import {
 } from '@ng-icons/heroicons/outline';
 import { AuthService } from '../../services/auth.service';
 import { CarItem, TrophyItem, RecordItem, ProfileResponse } from '../../models/profile.models';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environments.prod';
 
 @Component({
   selector: 'app-profile',
