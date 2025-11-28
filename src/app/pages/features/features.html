@@ -1,0 +1,39 @@
+<app-nav-bar></app-nav-bar>
+
+<main class="features-container">
+    <section id="updates">
+        <div class="section-header">
+            <h2>ÚLTIMAS <span>ACTUALIZACIONES</span></h2>
+            <p>Mantente informado sobre los últimos cambios, nuevo contenido y mejoras que llegan a Speed.</p>
+        </div>
+
+        <div class="updates-grid">
+            @for (update of updates; track update.version) {
+                <div class="update-card">
+                    <div class="update-header">
+
+                        <span class="update-type"
+                              [class.major]="update.type === 'MAJOR UPDATE'"
+                              [class.event]="update.type === 'EVENT'">
+                            {{ update.type }}
+                        </span>
+                        <span class="update-date">{{ update.date }}</span>
+                    </div>
+
+                    <div class="update-content">
+                        <h3><span>{{ update.version }}</span> - {{ update.title }}</h3>
+                        <ul>
+                            @for (change of update.changes; track $index) {
+                                <li>{{ change }}</li>
+                            }
+                        </ul>
+                    </div>
+
+                    <button class="read-more">NOTAS COMPLETAS</button>
+                </div>
+            }
+        </div>
+    </section>
+</main>
+
+<app-footer></app-footer>

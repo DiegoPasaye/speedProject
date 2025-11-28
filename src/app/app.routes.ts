@@ -18,7 +18,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/maps-wiki/maps-wiki').then(m => m.MapsWikiComponent)
   },
   {
+    path: 'mobile-app',
+    loadComponent: () => import('./pages/mobile-app/mobile-app').then(m => m.MobileAppPage)
+  },
+  {
     path: 'features',
-    loadChildren: () => import('./features/features-module').then(m => m.FeaturesModule)
+    loadComponent: () => import('./pages/features/features').then(m => m.FeaturesPage)
   },
 ];

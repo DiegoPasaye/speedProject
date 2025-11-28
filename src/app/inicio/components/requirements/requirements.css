@@ -24,7 +24,8 @@ section > p:first-of-type {
     margin-right: auto;
 }
 
-section button {
+section button,
+section .btn-download {
     background-color: oklch(.85 .18 85);
     color: oklch(.12 .01 240);
     border: none;
@@ -35,21 +36,29 @@ section button {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-transform: uppercase;
-    display: flex;
+    display: flex; 
     align-items: center;
     gap: 0.8rem;
     margin: 0 auto 3rem auto;
+    
+
+    text-decoration: none; 
+    justify-content: center;
+    width: fit-content;
 }
 
-section button img {
+
+section button img,
+section .btn-download img {
     height: 20px;
 }
 
-section button:hover {
+
+section button:hover,
+section .btn-download:hover {
     background-color: oklch(.9 .2 85);
     transform: translateY(-2px);
 }
-
 section > p:last-of-type {
     color: oklch(.65 .02 240);
     text-transform: uppercase;

@@ -1,0 +1,63 @@
+<app-nav-bar></app-nav-bar>
+
+<main class="mobile-app-container">
+    
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>RACECLIMB <span>GO</span></h1>
+            <p>Lleva la experiencia completa en tu bolsillo. Gestiona tu garaje, reclama recompensas y sigue tu progreso desde cualquier lugar.</p>
+        <div class="store-buttons">
+            <a href="/speed.apk" download="Speed.apk" class="store-btn">
+                <img src="/download.svg" alt="Apple Store"> 
+                <div>
+                    <span>Download on the</span>
+                    <strong>App Store</strong>
+                </div>
+            </a>
+
+            <a href="/speed.apk" download="Speed.apk" class="store-btn">
+                <img src="/download.svg" alt="Google Play"> 
+                <div>
+                    <span>GET IT ON</span>
+                    <strong>Google Play</strong>
+                </div>
+            </a>
+        </div>
+        </div>
+        <div class="hero-image">
+            <div class="phone-mockup">
+                <div class="screen">
+                    <img src="/perfil.webp" alt="App Screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-slider">
+        <h2>APP <span>FEATURES</span></h2>
+        
+        <div class="slider-container">
+            <button class="nav-btn prev" (click)="prevSlide()">&#10094;</button>
+            
+            <div class="slide-content">
+                <div class="slide-image">
+                    <img [src]="features[activeSlide].image" [alt]="features[activeSlide].title">
+                </div>
+                <div class="slide-text">
+                    <h3>{{ features[activeSlide].title }}</h3>
+                    <p>{{ features[activeSlide].description }}</p>
+                    <div class="slide-dots">
+                        @for (feature of features; track $index) {
+                            <span class="dot" [class.active]="$index === activeSlide" (click)="activeSlide = $index"></span>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <button class="nav-btn next" (click)="nextSlide()">&#10095;</button>
+        </div>
+    </section>
+
+</main>
+
+<app-footer></app-footer>
