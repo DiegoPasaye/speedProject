@@ -1,23 +1,31 @@
 <nav>
-    <a routerLink="/">
+    <a routerLink="/" (click)="closeMenu()">
         <img src="/logoBien.webp" alt="Speed logo">
     </a>
 
-    <div>
-        <a routerLink="/features">ACTUALIZACIONES</a>
-        <a routerLink="/mobile-app">APP MOVIL</a>
-        <a routerLink="/leaderboard">RANKING</a>
+    <button class="menu-toggle" (click)="toggleMenu()" aria-label="Abrir menú">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
 
-        <button class="btn-download">DESCARGAR</button>
+    <div class="nav-links" [class.active]="isMenuOpen">
+        <a routerLink="/features" (click)="closeMenu()">ACTUALIZACIONES</a>
+        <a routerLink="/mobile-app" (click)="closeMenu()">APP MOVIL</a>
+        <a routerLink="/leaderboard" (click)="closeMenu()">RANKING</a>
+
+        <button class="btn-download" (click)="closeMenu()">DESCARGAR</button>
 
         @if (isLoggedIn) {
-            <a routerLink="/profile" class="profile-btn" [title]="'Ir al perfil de ' + userName">
+            <a routerLink="/profile" class="profile-btn" [title]="'Ir al perfil de ' + userName" (click)="closeMenu()">
                 <ng-icon name="heroUserCircle" class="text-3xl"></ng-icon>
                 <span class="text-sm font-bold ml-2">{{ userName }}</span>
             </a>
         } @else {
-            <a routerLink="/auth/login">
-                <button class="btn-login">INICIAR SESION</button>
+            <a routerLink="/auth/login" class="btn-login" (click)="closeMenu()">
+                INICIAR SESION
             </a>
         }
     </div>

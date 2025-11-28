@@ -14,10 +14,18 @@ nav img {
     height: 60px;
 }
 
-nav > div {
+.nav-links {
     display: flex;
     align-items: center;
     gap: 2rem;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: oklch(.85 .18 85);
+    cursor: pointer;
 }
 
 nav a {
@@ -32,9 +40,10 @@ nav a:hover {
     color: oklch(.85 .18 85);
 }
 
-nav button {
+.btn-download,
+.btn-login {
     background-color: oklch(.85 .18 85);
-    color: oklch(.12 .01 240);
+    color: oklch(.12 .01 240) !important;
     border: none;
     padding: 0.8rem 1.5rem;
     border-radius: 5px;
@@ -43,11 +52,15 @@ nav button {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
 }
 
-nav button:hover {
+.btn-download:hover,
+.btn-login:hover {
     background-color: oklch(.9 .2 85);
     transform: translateY(-2px);
+    color: oklch(.12 .01 240);
 }
 
 .profile-btn {
@@ -61,23 +74,46 @@ nav button:hover {
 .profile-btn:hover {
     color: white;
     transform: scale(1.1);
-    transition: transform 0.5s ease;
 }
 
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem 5%;
+@media (max-width: 770px) {
+    .menu-toggle {
+        display: block;
     }
 
-    nav > div {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    nav button {
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
-        margin-top: 1rem;
+        background-color: oklch(.12 .01 240);
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        gap: 0;
+        
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+    }
+
+    .nav-links.active {
+        max-height: 500px;
+        padding: 2rem 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+
+    .nav-links a, 
+    .nav-links button {
+        margin: 10px 0;
+        width: 80%; 
+        text-align: center;
+    }
+    
+    .btn-download,
+    .btn-login {
+        width: 80%;
     }
 }

@@ -14,6 +14,7 @@ import { AuthService } from '../../../services/auth.service';
   providers: [provideIcons({ heroUserCircle })]
 })
 export class NavBar {
+  isMenuOpen = false;
 
   constructor(public authService: AuthService) {}
 
@@ -23,5 +24,13 @@ export class NavBar {
 
   get userName(): string {
     return this.authService.currentUser?.profile?.display_name || 'Usuario';
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
   }
 }
