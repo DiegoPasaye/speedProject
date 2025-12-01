@@ -7,13 +7,13 @@ header {
     min-height: 80vh;
     gap: 3rem;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 header > div:first-child {
     flex: 1;
     max-width: 600px;
-    z-index: 2; 
+    z-index: 2;
 }
 
 header > div:first-child > span {
@@ -48,7 +48,6 @@ header p {
     margin-bottom: 2.5rem;
 }
 
-/* Botones */
 header > div:first-child > div:nth-of-type(2) {
     display: flex;
     gap: 1.5rem;
@@ -68,7 +67,6 @@ header > div:first-child > div:nth-of-type(2) button {
     gap: 0.8rem;
 }
 
-/* Botón Amarillo */
 header > div:first-child > div:nth-of-type(2) button:first-child {
     background-color: oklch(.85 .18 85);
     color: oklch(.12 .01 240);
@@ -83,10 +81,11 @@ header > div:first-child > div:nth-of-type(2) button:last-child {
     background-color: transparent;
     color: oklch(.98 .01 90);
     border: 1px solid oklch(.25 .01 240);
-    padding: 0; 
+    padding: 0;
+}
 header > div:first-child > div:nth-of-type(2) button:last-child a {
     display: block;
-    padding: 1rem 2rem; 
+    padding: 1rem 2rem;
     color: inherit;
     text-decoration: none;
 }
@@ -128,8 +127,7 @@ header > img {
     z-index: 1;
 }
 
-
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     header {
         flex-direction: column;
         text-align: center;
@@ -150,7 +148,6 @@ header > img {
         height: auto;
         max-height: 500px;
         object-fit: cover;
-  
         order: 2;
         margin-top: 0;
     }
@@ -170,7 +167,7 @@ header > img {
 
 @media (max-width: 768px) {
     header {
-        padding: 5rem 1.5rem; 
+        padding: 5rem 1.5rem;
     }
 
     header h1 {
@@ -196,7 +193,7 @@ header > img {
     }
     
     header .divisor {
-        display: none; 
+        display: none;
     }
 
     header > img {
@@ -218,5 +215,4 @@ header > img {
         padding-top: 4rem;
         gap: 2rem;
     }
-}
 }
