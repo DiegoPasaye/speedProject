@@ -32,6 +32,9 @@ importers:
       '@angular/router':
         specifier: ^20.3.0
         version: 20.3.9(@angular/common@20.3.9(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@20.3.9(@angular/common@20.3.9(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
+      '@angular/service-worker':
+        specifier: ^20.3.0
+        version: 20.3.14(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       '@ng-icons/core':
         specifier: ^32.2.0
         version: 32.5.0(@angular/common@20.3.9(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
@@ -50,7 +53,7 @@ importers:
     devDependencies:
       '@angular/build':
         specifier: ^20.3.3
-        version: 20.3.8(@angular/compiler-cli@20.3.9(@angular/compiler@20.3.9)(typescript@5.9.3))(@angular/compiler@20.3.9)(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@20.3.9(@angular/common@20.3.9(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1)))(@types/node@24.9.2)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4)(lightningcss@1.30.2)(postcss@8.5.6)(tailwindcss@3.4.18)(tslib@2.8.1)(typescript@5.9.3)
+        version: 20.3.8(@angular/compiler-cli@20.3.9(@angular/compiler@20.3.9)(typescript@5.9.3))(@angular/compiler@20.3.9)(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@20.3.9(@angular/common@20.3.9(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/service-worker@20.3.14(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@types/node@24.9.2)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4)(lightningcss@1.30.2)(postcss@8.5.6)(tailwindcss@3.4.18)(tslib@2.8.1)(typescript@5.9.3)
       '@angular/cli':
         specifier: ^20.3.3
         version: 20.3.8(@types/node@24.9.2)(chokidar@4.0.3)
@@ -307,6 +310,14 @@ packages:
       '@angular/common': 20.3.9
       '@angular/core': 20.3.9
       '@angular/platform-browser': 20.3.9
+      rxjs: ^6.5.3 || ^7.4.0
+
+  '@angular/service-worker@20.3.14':
+    resolution: {integrity: sha512-deqrAszJ534/wUTjb7UByoX0SgOJAWPE6g+y1HZv6Uy9OJYakkbwBt4lKqftHkga9guBsHkZydDfJNBIrSAbkw==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
+    hasBin: true
+    peerDependencies:
+      '@angular/core': 20.3.14
       rxjs: ^6.5.3 || ^7.4.0
 
   '@babel/code-frame@7.27.1':
@@ -3329,7 +3340,7 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@angular/build@20.3.8(@angular/compiler-cli@20.3.9(@angular/compiler@20.3.9)(typescript@5.9.3))(@angular/compiler@20.3.9)(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@20.3.9(@angular/common@20.3.9(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1)))(@types/node@24.9.2)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4)(lightningcss@1.30.2)(postcss@8.5.6)(tailwindcss@3.4.18)(tslib@2.8.1)(typescript@5.9.3)':
+  '@angular/build@20.3.8(@angular/compiler-cli@20.3.9(@angular/compiler@20.3.9)(typescript@5.9.3))(@angular/compiler@20.3.9)(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@20.3.9(@angular/common@20.3.9(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/service-worker@20.3.14(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@types/node@24.9.2)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4)(lightningcss@1.30.2)(postcss@8.5.6)(tailwindcss@3.4.18)(tslib@2.8.1)(typescript@5.9.3)':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.2003.8(chokidar@4.0.3)
@@ -3364,6 +3375,7 @@ snapshots:
     optionalDependencies:
       '@angular/core': 20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1)
       '@angular/platform-browser': 20.3.9(@angular/common@20.3.9(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))
+      '@angular/service-worker': 20.3.14(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       karma: 6.4.4
       lmdb: 3.4.2
       postcss: 8.5.6
@@ -3477,6 +3489,12 @@ snapshots:
       '@angular/common': 20.3.9(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       '@angular/core': 20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1)
       '@angular/platform-browser': 20.3.9(@angular/common@20.3.9(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))
+      rxjs: 7.8.2
+      tslib: 2.8.1
+
+  '@angular/service-worker@20.3.14(@angular/core@20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)':
+    dependencies:
+      '@angular/core': 20.3.9(@angular/compiler@20.3.9)(rxjs@7.8.2)(zone.js@0.15.1)
       rxjs: 7.8.2
       tslib: 2.8.1
 
