@@ -141,9 +141,9 @@ section > div > div p {
     section > p:first-of-type {
         font-size: 1rem;
     }
-    section button {
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
+    section button, .btn-download {
+        padding: 0.8rem 2rem !important;
+        font-size: 1rem !important;
     }
     section > p:last-of-type {
         font-size: 0.8rem;

@@ -146,3 +146,8 @@ section > div:last-child > div > div:last-child p {
         margin-bottom: 1rem;
     }
 }
+@media(max-width: 390px){
+    section > div:last-child > div img {
+        display: none;
+    }
+}

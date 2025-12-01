@@ -178,3 +178,8 @@ header > img {
         gap: 1rem;
     }
 }
+@media(max-width: 380px){
+    .headerImage{
+        margin-top: 40%;
+    }
+}
