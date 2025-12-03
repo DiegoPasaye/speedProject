@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
@@ -11,10 +11,12 @@ import { AuthService } from '../../services/auth.service';
 import { CarItem, TrophyItem, RecordItem, ProfileResponse } from '../../models/profile.models';
 import { environment } from '../../../environments/environments.prod';
 
+import { EditProfileModalComponent } from './edit-profile-modal/edit-profile-modal';
+
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, NgIconComponent, HttpClientModule],
+  imports: [CommonModule, NgIconComponent, HttpClientModule, EditProfileModalComponent],
   templateUrl: './profile.html',
   providers: [
     provideIcons({
@@ -25,37 +27,42 @@ import { environment } from '../../../environments/environments.prod';
   ]
 })
 export class ProfileComponent implements OnInit {
+  private http = inject(HttpClient);
+  private authService = inject(AuthService);
+
   activeTab: 'garage' | 'trophies' | 'records' = 'garage';
   isLoading = true;
+
+  showEditModal = false;
 
   profileData: ProfileResponse | null = null;
 
   carImages: Record<string, string> = {
     // --- MODELO 1: Street Tuner (Hatchback/JDM) ---
-    'Street Tuner Rojo': 'cars/car1_red.webp',
-    'Street Tuner Verde': 'cars/car1_green.webp',
-    'Street Tuner Púrpura': 'cars/car1_purple.webp',
-    'Street Tuner Amarillo': 'cars/car1_yellow.webp',
+    'Street Tuner Rojo': 'cars/car1redPixel.png',
+    'Street Tuner Verde': 'cars/car1greenPixel.png',
+    'Street Tuner Púrpura': 'cars/car1puplePixel.png',
+    'Street Tuner Amarillo': 'cars/car1yellowPixel.png',
+
 
     // --- MODELO 2: Terra SUV (Jeep/Offroad) ---
-    'Terra SUV Rojo': 'cars/car2_red.webp',
-    'Terra SUV Verde': 'cars/car2_green.webp',
-    'Terra SUV Púrpura': 'cars/car2_purple.webp',
-    'Terra SUV Amarillo': 'cars/car2_yellow.webp',
+    'Terra SUV Rojo': 'cars/car2redPixel.png',
+    'Terra SUV Verde': 'cars/car2greenPixel.png',
+    'Terra SUV Púrpura': 'cars/car2purplePixel.png',
+    'Terra SUV Amarillo': 'cars/car2yellowPixel.png',
 
     // --- MODELO 3: Phantom GT (Deportivo/Muscle) ---
-    'Phantom GT Rojo': 'cars/car3_red.webp',
-    'Phantom GT Verde': 'cars/car3_green.webp',
-    'Phantom GT Púrpura': 'cars/car3_purple.webp',
-    'Phantom GT Amarillo': 'cars/car3_yellow.webp',
+    'Phantom GT Rojo': 'cars/car3redPixel.png',
+    'Phantom GT Verde': 'cars/car3greenPixel.png',
+    'Phantom GT Púrpura': 'cars/car3purplePixel.png',
+    'Phantom GT Amarillo': 'cars/car3yellowPixel.png',
 
     // --- MODELO 4: Solaris Supercar (Futurista/Hypercar) ---
-    'Solaris Supercar Rojo': 'cars/car4_red.webp',
-    'Solaris Supercar Verde': 'cars/car4_green.webp',
-    'Solaris Supercar Púrpura': 'cars/car4_purple.webp',
-    'Solaris Supercar Amarillo': 'cars/car4_yellow.webp',
+    'Solaris Supercar Rojo': 'cars/car4redPixel.png',
+    'Solaris Supercar Verde': 'cars/car4greenPixel.png',
+    'Solaris Supercar Púrpura': 'cars/car4purplePixel.png',
+    'Solaris Supercar Amarillo': 'cars/car4yellowPixel.png',
   };
-
 
   trophyConfig: Record<string, { icon: string; color: string }> = {
     'Primeros Pasos': { icon: 'heroFlag', color: 'text-green-500' },
@@ -68,10 +75,7 @@ export class ProfileComponent implements OnInit {
     'Ahorrador': { icon: 'heroCurrencyDollar', color: 'text-green-300' }
   };
 
-  constructor(
-    private http: HttpClient,
-    private authService: AuthService
-  ) { }
+  constructor() {}
 
   ngOnInit(): void {
     this.loadProfile();
@@ -104,8 +108,9 @@ export class ProfileComponent implements OnInit {
     this.activeTab = tab;
   }
 
+  // --- HELPERS ---
   getCarImage(name: string): string {
-    return this.carImages[name] || 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&q=80&w=400';
+    return this.carImages[name] || 'assets/cars/car1redPixel.png';
   }
 
   getCarClass(cost: number): string {
@@ -121,7 +126,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getTrophyColor(name: string, achieved: boolean): string {
-    if (!achieved) return 'text-gray-600';
+    if (!achieved) return 'text-gray-400';
     return this.trophyConfig[name]?.color || 'text-yellow-500';
   }
 

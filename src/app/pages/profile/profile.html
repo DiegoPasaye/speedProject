@@ -1,3 +1,5 @@
+
+
 <div class="min-h-screen bg-speed-fondo text-speed-texto p-4 md:p-8 font-sans bg-fixed bg-no-repeat" style="background-image:
        radial-gradient(ellipse 50% 70% at 25% 25%, var(--color-speed-acento-glow), transparent 80%),
        radial-gradient(ellipse 50% 70% at 75% 75%, var(--color-speed-acento-glow), transparent 80%);">
@@ -27,7 +29,7 @@
                 class="h-8 w-8 flex items-center justify-center text-gray-400 hover:text-speed-acento transition-colors rounded-full hover:bg-speed-superficie-2">
                 <ng-icon name="heroShare" class="text-lg"></ng-icon>
               </button>
-              <button
+              <button (click)="showEditModal = true"
                 class="h-8 w-8 flex items-center justify-center text-gray-400 hover:text-speed-acento transition-colors rounded-full hover:bg-speed-superficie-2">
                 <ng-icon name="heroCog6Tooth" class="text-lg"></ng-icon>
               </button>
@@ -187,7 +189,7 @@
 
           <img [src]="getCarImage(car.name)" [alt]="car.name"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            [ngClass]="{'grayscale opacity-40': !car.unlocked}">
+            [ngClass]="{'to-black opacity-40': !car.unlocked}">
 
           <div class="absolute inset-0 bg-gradient-to-t from-speed-fondo/90 via-transparent to-transparent opacity-80">
           </div>
@@ -286,4 +288,10 @@
 
     </div>
   </div>
+  <app-edit-profile-modal
+    *ngIf="showEditModal && profileData"
+    [user]="profileData.user"
+    (close)="showEditModal = false"
+    (userUpdated)="loadProfile()">
+  </app-edit-profile-modal>
 </div>

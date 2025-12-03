@@ -14,15 +14,14 @@ export interface UserProfile {
 export interface CarItem {
   car_id: string;
   name: string;
-  cost_to_unlock: number; // Esta faltaba y causaba el error
+  cost_to_unlock: number;
   base_motor: number;
   base_durabilidad: number;
   base_aceleracion: number;
   unlocked: boolean;
-  level_motor: number;    // Esta faltaba y causaba el error
+  level_motor: number;
   level_durabilidad: number;
 
-  // Propiedades opcionales para mapeo visual (si las usas en el front)
   img?: string;
   class?: string;
   speed?: number;
@@ -31,12 +30,11 @@ export interface CarItem {
 export interface TrophyItem {
   achievement_id: string;
   name: string;
-  description: string; // Esta faltaba
+  description: string;
   reward_monedas: number;
   achieved: boolean;
   unlocked_at?: string;
 
-  // Helpers visuales
   iconName?: string;
   colorClass?: string;
 }
@@ -46,7 +44,6 @@ export interface RecordItem {
   map_name: string;
   high_score: number;
 
-  // Helpers visuales (opcionales si no vienen de la BD)
   rank?: string;
   date?: string;
   time?: string;
@@ -57,4 +54,13 @@ export interface ProfileResponse {
   garage: CarItem[];
   trophies: TrophyItem[];
   records: RecordItem[];
+}
+
+export interface UpdateProfileResponse {
+  message: string;
+  user: {
+    username: string;
+    email: string;
+    display_name: string;
+  };
 }
