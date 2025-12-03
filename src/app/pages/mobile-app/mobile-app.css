@@ -1,5 +1,4 @@
 .mobile-app-container {
-    background-color: oklch(.12 .01 240);
     min-height: 100vh;
     color: oklch(.98 .01 90);
     overflow-x: hidden;
