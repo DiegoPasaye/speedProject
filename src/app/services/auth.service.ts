@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environments.prod';
-import { RegisterRequest, RegisterResponse, LoginResponse, UserSession } from '../models/auth.models';
+import { RegisterRequest, RegisterResponse, LoginResponse, UserSession, } from '../models/auth.models';
+import { UpdateProfileResponse } from '../models/profile.models';
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -29,9 +31,12 @@ export class AuthService {
     );
   }
 
-  // --- MÉTODOS DE UTILIDAD ---
   private saveUserToStorage(user: UserSession): void {
     localStorage.setItem(this.userKey, JSON.stringify(user));
+  }
+
+  updateProfile(userId: string, data: { username: string; display_name: string; email: string }): Observable<UpdateProfileResponse> {
+    return this.http.put<UpdateProfileResponse>(`${this.apiUrl}/profile/${userId}`, data);
   }
 
   get currentUser(): UserSession | null {
