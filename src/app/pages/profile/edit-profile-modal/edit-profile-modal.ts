@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroXMark, heroCamera, heroCog6Tooth } from '@ng-icons/heroicons/outline';
 import { AuthService } from '../../../services/auth.service';
+import { ToastService } from '../../../services/toast.service';
 import { UserProfile, UpdateProfileResponse } from '../../../models/profile.models';
 
 @Component({
@@ -28,7 +29,10 @@ export class EditProfileModalComponent implements OnInit {
     email: ''
   };
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit() {
     if (this.user) {
@@ -51,7 +55,9 @@ export class EditProfileModalComponent implements OnInit {
     this.authService.updateProfile(userId, this.formData).subscribe({
       next: (res: UpdateProfileResponse) => {
         this.isLoading = false;
-        console.log(res.message);
+
+        this.toastService.success('Perfil actualizado correctamente');
+
         this.userUpdated.emit();
         this.onClose();
       },
@@ -59,6 +65,8 @@ export class EditProfileModalComponent implements OnInit {
         this.isLoading = false;
         console.error(err);
         this.errorMessage = err.error?.error || 'Error al guardar los cambios.';
+
+        this.toastService.error(this.errorMessage);
       }
     });
   }
