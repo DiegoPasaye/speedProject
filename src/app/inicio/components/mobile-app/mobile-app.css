@@ -1,0 +1,280 @@
+.mobile-app-container {
+    background-color: oklch(.12 .01 240);
+    min-height: 100vh;
+    color: oklch(.98 .01 90);
+    overflow-x: hidden;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6rem 10%;
+    gap: 4rem;
+    background: linear-gradient(180deg, oklch(.12 .01 240) 0%, oklch(.2 .01 240) 100%);
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content h1 span {
+    color: oklch(.85 .18 85);
+}
+
+.hero-content p {
+    color: oklch(.65 .02 240);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.store-buttons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.store-btn {
+    background-color: oklch(.98 .01 90);
+    color: oklch(.12 .01 240);
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.store-btn:hover {
+    transform: translateY(-3px);
+    background-color: oklch(.85 .18 85);
+}
+
+.store-btn img {
+    width: 30px;
+    height: 30px;
+}
+
+.store-btn div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.store-btn span { font-size: 0.7rem; }
+.store-btn strong { font-size: 1.1rem; font-weight: 800; }
+
+/* Phone Mockup - MEJORADO */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.phone-mockup {
+    width: 320px; 
+    height: 650px;
+    background-color: #000;
+    border-radius: 45px;
+    padding: 12px;
+    box-shadow: 
+        0 0 0 2px #333,
+        0 20px 50px rgba(0,0,0,0.7), 
+        inset 0 0 20px rgba(255,255,255,0.1); 
+    position: relative;
+    overflow: hidden;
+}
+
+/* La pantalla iluminada */
+.phone-mockup .screen {
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    border-radius: 32px; 
+    overflow: hidden;
+    position: relative;
+}
+
+/* La imagen dentro de la pantalla */
+.phone-mockup .screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.phone-mockup::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 25px;
+    background-color: #000;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    z-index: 2;
+}
+
+/* --- Features Slider Section --- */
+.features-slider {
+    padding: 6rem 5%;
+    text-align: center;
+}
+
+.features-slider h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 4rem;
+}
+
+.features-slider h2 span { color: oklch(.85 .18 85); }
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.slide-content {
+    background-color: oklch(.2 .01 240);
+    border: 1px solid oklch(.25 .01 240);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    min-height: 400px;
+}
+
+.slide-image {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.slide-text {
+    flex: 1;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.slide-text h3 {
+    color: oklch(.85 .18 85);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.slide-text p {
+    color: oklch(.65 .02 240);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Controles del Slider */
+.nav-btn {
+    background: transparent;
+    border: 2px solid oklch(.25 .01 240);
+    color: oklch(.65 .02 240);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn:hover {
+    border-color: oklch(.85 .18 85);
+    color: oklch(.85 .18 85);
+    background-color: rgba(255, 194, 0, 0.1);
+}
+
+.slide-dots {
+    margin-top: 2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: oklch(.25 .01 240);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: oklch(.85 .18 85);
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 4rem 5%;
+    }
+
+    .store-buttons {
+        justify-content: center;
+    }
+    
+    .slide-content {
+        flex-direction: column;
+    }
+
+    .slide-image {
+        height: 250px;
+        flex: none; 
+    }
+    
+    .slide-image img {
+        position: relative;
+    }
+
+    .slide-text {
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .slide-dots {
+        justify-content: center;
+    }
+}

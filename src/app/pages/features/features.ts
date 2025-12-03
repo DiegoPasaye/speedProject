@@ -13,34 +13,34 @@ import { CommonModule } from '@angular/common';
 export class FeaturesPage {
     updates = [
     {
-      version: 'v2.1.0',
-      date: '05 NOV 2025',
-      title: 'Season of Storms',
+      version: 'v1.1.0',
+      date: '01 DEC 2025',
+      title: 'New Major Update Released!',
       type: 'MAJOR UPDATE',
       changes: [
-        'Nuevo mapa: "Thunder Peak" con clima dinámico.',
-        'Vehículo añadido: "Storm Chaser" 4x4.',
-        'Mejoras en la física de colisiones aéreas.'
+        '2 Nuevos mapas!.',
+        '2 Vehiculos nuevos añadidos.',
+        'Mejoras en la física de colisiones y efectos del vehiculo.'
       ]
     },
     {
-      version: 'v2.0.5',
-      date: '20 OCT 2025',
-      title: 'Halloween Event',
-      type: 'EVENT',
+      version: 'v1.0.1',
+      date: '12 NOV 2025',
+      title: 'Bug Fixes & Improvements',
+      type: 'FIX UPDATE',
       changes: [
-        'Evento de tiempo limitado: "Spooky Hills".',
-        'Skins temáticas para todos los vehículos.'
+        'Solución del bug en el choque del vehiculo.',
+        'Solución de la pausa inesperada en la música.'
       ]
     },
     {
-      version: 'v2.0.0',
-      date: '01 OCT 2025',
-      title: 'The Big Engine Overhaul',
-      type: 'PATCH',
+      version: 'v1.0.0',
+      date: '05 NOV 2025',
+      title: 'Launch Event',
+      type: 'LAUNCH',
       changes: [
-        'Rebalanceo total del sistema de mejoras de motor.',
-        'Nueva interfaz de usuario para el garaje.'
+        'Todos los cambios planteados.',
+        'Vehiculos extras añadidos.'
       ]
     }
   ];

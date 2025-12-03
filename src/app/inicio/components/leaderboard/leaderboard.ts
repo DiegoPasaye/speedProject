@@ -14,10 +14,12 @@ export class Leaderboard implements OnInit {
   
   topPlayers: ScoreEntry[] = [];
 
+  //Inicializacion con la obtencion del leaderboard
   ngOnInit(): void {
     this.obtenerLeaderboard();
   }
 
+  //Funcion para obtener el leaderboard desde el servicio API
   obtenerLeaderboard() {
     this.apiService.getLeaderboard().subscribe({
       next: (data: any) => {
@@ -25,12 +27,8 @@ export class Leaderboard implements OnInit {
             this.topPlayers = data.leaderboard;
         } else if (Array.isArray(data)) {
             this.topPlayers = data;
-        } else {
-            console.error('Formato de datos inesperado:', data);
-            this.topPlayers = [];
         }
-        
-        console.log('Leaderboard listo para mostrar:', this.topPlayers);
+        // console.log('Data recibida: ', this.topPlayers);
       },
       error: (err) => {
         console.error('Error al obtener el leaderboard:', err);
