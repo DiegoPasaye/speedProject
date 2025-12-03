@@ -1,14 +1,16 @@
 <app-nav-bar></app-nav-bar>
 
-<main class="mobile-app-container">
-    
-    <section class="hero-section">
+<main class="mobile-app-container" style="background-image:
+       radial-gradient(ellipse 50% 70% at 75% 25%, var(--color-speed-acento-glow), transparent 80%),
+       radial-gradient(ellipse 50% 70% at 25% 75%, var(--color-speed-acento-glow), transparent 80%);">
+
+    <section class="hero-section " >
         <div class="hero-content">
             <h1>RACECLIMB <span>GO</span></h1>
             <p>Lleva la experiencia completa en tu bolsillo. Gestiona tu garaje, reclama recompensas y sigue tu progreso desde cualquier lugar.</p>
         <div class="store-buttons">
             <a href="/speed.apk" download="Speed.apk" class="store-btn">
-                <img src="/download.svg" alt="Apple Store"> 
+                <img src="/download.svg" alt="Apple Store">
                 <div>
                     <span>Download on the</span>
                     <strong>App Store</strong>
@@ -16,7 +18,7 @@
             </a>
 
             <a href="/speed.apk" download="Speed.apk" class="store-btn">
-                <img src="/download.svg" alt="Google Play"> 
+                <img src="/download.svg" alt="Google Play">
                 <div>
                     <span>GET IT ON</span>
                     <strong>Google Play</strong>
@@ -35,10 +37,10 @@
 
     <section class="features-slider">
         <h2>APP <span>FEATURES</span></h2>
-        
+
         <div class="slider-container">
             <button class="nav-btn prev" (click)="prevSlide()">&#10094;</button>
-            
+
             <div class="slide-content">
                 <div class="slide-image">
                     <img [src]="features[activeSlide].image" [alt]="features[activeSlide].title">

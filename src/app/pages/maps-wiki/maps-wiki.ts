@@ -8,6 +8,7 @@ import {
 } from '@ng-icons/heroicons/outline';
 import { environment } from '../../../environments/environments.prod';
 import { MapWikiItem } from '../../models/maps.models';
+import { NavBar } from '../../inicio/components/nav-bar/nav-bar';
 
 interface MapVisualConfig {
   image: string;
@@ -25,7 +26,7 @@ interface MapVisualConfig {
 @Component({
   selector: 'app-maps-wiki',
   standalone: true,
-  imports: [CommonModule, NgIconComponent, HttpClientModule],
+  imports: [CommonModule, NgIconComponent, HttpClientModule, NavBar],
   templateUrl: './maps-wiki.html',
   providers: [provideIcons({
     heroMap, heroGlobeAmericas, heroUsers, heroCurrencyDollar, heroTag,
@@ -39,32 +40,32 @@ export class MapsWikiComponent implements OnInit {
   selectedMap: MapWikiItem | null = null;
 
   mapVisuals: Record<string, MapVisualConfig> = {
-    'Cañón Desértico': {
-      image: 'https://images.unsplash.com/photo-1545134969-8a839f535329?q=80&w=800&auto=format&fit=crop',
+    'Circuito Residencial': {
+      image: 'maps/mapa4.jpeg',
       difficulty: 'Easy',
       length: '3.5 km',
       laps: 3,
       weather: 'Dry / Sandstorms',
       attributes: { curves: 45, straights: 80, technical: 30 }
     },
-    'Montaña Nevada': {
-      image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop',
+    'Parque Central': {
+      image: 'maps/mapa2.jpeg',
       difficulty: 'Medium',
       length: '4.8 km',
       laps: 3,
       weather: 'Snow / Blizzard',
       attributes: { curves: 60, straights: 60, technical: 95 }
     },
-    'Ciudad Neón': {
-      image: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=800&auto=format&fit=crop',
+    'Distrito Financiero': {
+      image: 'maps/mapa3.jpeg',
       difficulty: 'Hard',
       length: '5.2 km',
       laps: 2,
       weather: 'Rain / Clear Night',
       attributes: { curves: 70, straights: 50, technical: 85 }
     },
-    'Superficie Lunar': {
-      image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=800&auto=format&fit=crop',
+    'Ruta Periférica': {
+      image: 'maps/mapa1.jpeg',
       difficulty: 'Expert',
       length: '6.1 km',
       laps: 2,

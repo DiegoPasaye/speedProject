@@ -10,13 +10,13 @@ import {
 import { AuthService } from '../../services/auth.service';
 import { CarItem, TrophyItem, RecordItem, ProfileResponse } from '../../models/profile.models';
 import { environment } from '../../../environments/environments.prod';
-
+import { NavBar } from '../../inicio/components/nav-bar/nav-bar';
 import { EditProfileModalComponent } from './edit-profile-modal/edit-profile-modal';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, NgIconComponent, HttpClientModule, EditProfileModalComponent],
+  imports: [CommonModule, NgIconComponent, HttpClientModule, EditProfileModalComponent, NavBar],
   templateUrl: './profile.html',
   providers: [
     provideIcons({

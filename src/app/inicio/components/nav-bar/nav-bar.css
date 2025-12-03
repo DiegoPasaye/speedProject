@@ -3,7 +3,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background-color: oklch(.12 .01 240);
+    background-color: oklch(0% 0 0);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -91,7 +91,7 @@ nav a:hover {
         align-items: center;
         padding: 0;
         gap: 0;
-        
+
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease-in-out, padding 0.4s ease;
@@ -105,13 +105,13 @@ nav a:hover {
     }
 
 
-    .nav-links a, 
+    .nav-links a,
     .nav-links button {
         margin: 10px 0;
-        width: 80%; 
+        width: 80%;
         text-align: center;
     }
-    
+
     .btn-download,
     .btn-login {
         width: 80%;
